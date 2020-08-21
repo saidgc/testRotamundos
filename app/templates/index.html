@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <style>
+        html{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        a{
+            text-decoration:none;
+            color: black;
+        }
+        h1{
+            text-transform: capitalize;
+        }
+        #pokemons{
+            margin: 0 auto;
+            display: flex;
+            width: 70vw;
+            flex-wrap: wrap;
+        }
+        .pokemonCard{
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width: 250px;
+            height: 250px;
+            border: 1px solid #303030;
+            border-radius: 10px;
+            margin: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div id="pokemons">
+        {% for pokemon in pokemons %}
+        <a href="/pokemon/{{pokemon[0]}}">
+            <div class="pokemonCard">
+                <h1>{{ pokemon[1]['name'] }}</h1>
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon[0]}}.png" height="100px" width="100px" alt="{{pokemon[0]}}">
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+
+    
+</body>
+</html>

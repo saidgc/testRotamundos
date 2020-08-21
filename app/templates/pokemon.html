@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon</title>
+    <style>
+        html{
+            color: black;
+            text-align: center;
+        }
+        h1{
+            text-transform: capitalize;
+        }
+        #display{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="display">
+        <h1>{{pokemon['name']}}</h1>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{id}}.png" height="100px" width="100px" alt="{{id}}">
+        <h2>Habilidades</h2>
+        <ol>
+            {% for abilities in pokemon['abilities'] %}
+                <li>{{abilities['ability']['name']}}</li>
+            {%endfor%}
+        </ol>
+        
+        
+        <h2>Experiencia base: {{pokemon['base_experience']}}</h2>
+        
+
+        <h2>Formas</h2>
+
+        <ol>
+            {% for forms in pokemon['forms'] %}
+                <li>{{forms['name']}}</li>
+            {%endfor%}
+        </ol>
+
+        
+
+        {% if pokemon['game_indices'] %}
+        <h2>Indices de juego</h2>
+        <ul>
+            {% for forms in pokemon['game_indices'] %}
+                <li>{{forms['game_index']}} {{forms['version']['name']}}</li>
+            {%endfor%}
+        </ul>
+        {%endif%}
+
+        <h2>Altura: {{pokemon['height']}}</h2>
+
+        {% if pokemon['held_items'] %}
+        <h2>Artículos retenidos</h2>
+        <ol>
+            {% for held_items in pokemon['held_items'] %}
+                <li>{{held_items}}</li>
+            {%endfor%}
+        </ol>
+        {%endif%}
+
+        {% if pokemon['moves'] %}
+        <h2>Movimientos</h2>
+        <ol>
+            {% for moves in pokemon['moves'] %}
+                <li>{{moves['move']['name']}}</li>
+            {%endfor%}
+        </ol>
+        {%endif%}
+
+        <H2>Orden {{pokemon['order']}}</H2>
+
+        <h2>Especies</h2>
+        <ul>
+                <li>{{pokemon['species']['name']}}</li>
+        </ul>
+        
+        <h2>Estadisticas</h2>
+        {% for stats in pokemon['stats']%}
+
+        <ul>
+
+            <li>{{stats['stat']['name']}}: {{stats['base_stat']}}, esfuerzo: {{stats['effort']}}</li>
+        </ul>
+        {%endfor%}
+
+        <h2>Tipo</h2>
+        <ul>
+            {% for types in pokemon['types']%}
+                <li>{{types['type']['name']}}</li>
+            {%endfor%}
+        </ul>
+
+        <h2>Peso {{pokemon['weight']}}</h2>
+
+    </div>
+    
+</body>
+</html>

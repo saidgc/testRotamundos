@@ -93,7 +93,9 @@
         <h2>Tipo</h2>
         <ul>
             {% for types in pokemon['types']%}
-                <li>{{types['type']['name']}}</li>
+                <a href="/tipo/{{types['type']['name']}}">
+                    <li>{{types['type']['name']}}</li>
+                </a>
             {%endfor%}
         </ul>
 
